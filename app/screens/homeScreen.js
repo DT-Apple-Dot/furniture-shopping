@@ -7,39 +7,55 @@ import {
   Text,
   ScrollView,
   TouchableOpacity,
+  FlatList
 } from "react-native";
 import colors from "../config/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 const { width } = Dimensions.get("screen");
 
 import ListCatrgories from "../components/ListCatrgories";
+import catrgoriesItems from "../config/CatrgoriesItems";
 
 const HomeScreen = ({ navigation }) => {
+  const [selectedcategory, setselectedcategory] = React.useState(null);
   return (
     <SafeAreaView style={{ backgroundColor: colors.white, flex: 1 }}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.header}>
-          <MaterialCommunityIcons
-            name="magnify"
-            size={24}
-            color={colors.primary}
-            style={styles.icon}
-          />
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <View style={styles.header}>
+        <MaterialCommunityIcons
+          name="magnify"
+          size={24}
+          color={colors.primary}
+          style={styles.icon}
+        />
 
-          <Text style={styles.headerTitle}>
-            Make home <Text style={styles.title}>BEAUTIFUL</Text>
-          </Text>
+        <Text style={styles.headerTitle}>
+          Make home <Text style={styles.title}>BEAUTIFUL</Text>
+        </Text>
 
-          <MaterialCommunityIcons
-            name="cart-outline"
-            size={24}
-            color={colors.primary}
-            style={styles.icon}
+        <MaterialCommunityIcons
+          name="cart-outline"
+          size={24}
+          color={colors.primary}
+          style={styles.icon}
+        />
+      </View>
+      <FlatList
+        data={catrgoriesItems}
+        horizontal
+        renderItem={({ item }) => (
+          <ListCatrgories
+            icon={item.iconName}
+            name={item.name}
+            index={item.id}
+            selectedcategory={selectedcategory}
+            setselectedcategory={setselectedcategory}
           />
-        </View>
-        <ListCatrgories />
-      </ScrollView>
-    </SafeAreaView>
+        )}
+        keyExtractor={(item) => item.id.toString()}
+      />
+    </ScrollView>
+  </SafeAreaView>
   );
 };
 

@@ -3,53 +3,43 @@ import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import colors from "../config/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-const ListCatrgories = () => {
-  const catrgoriesItems = [
-    { name: "Popular", iconName: "star-outline" },
-    { name: "Chair", iconName: "seat-outline" },
-    { name: "Table", iconName: "table-furniture" },
-    { name: "Armchair", iconName: "sofa-single-outline" },
-    { name: "Bed", iconName: "bed-king-outline" },
-  ];
-
-  const [selectedcatrgory, setselectedcatrgory] = React.useState(0);
-
+const ListCatrgories = ({ name, index, icon, selectedcategory, setselectedcategory }) => {
   return (
     <View style={styles.catrgoriesContainer}>
-      {catrgoriesItems.map((item, index) => (
-        <TouchableOpacity
-          activeOpacity={0.8}
-          key={index}
-          onPress={() => setselectedcatrgory(index)}
+      <TouchableOpacity
+        activeOpacity={0.8}
+        key={index}
+        onPress={() => {
+          setselectedcategory(index);
+        }}
+      >
+        <View
+          style={[
+            styles.catrgoriesItemBtn,
+            {
+              backgroundColor:
+              selectedcategory === index ? colors.primary : colors.light,
+            },
+          ]}
         >
-          <View
+          <MaterialCommunityIcons
+            name={icon}
+            size={24}
+            color={selectedcategory === index ? colors.white : colors.primary}
+          />
+          <Text
             style={[
-              styles.catrgoriesItemBtn,
+              styles.catrgoryText,
               {
-                backgroundColor:
-                  selectedcatrgory == index ? colors.primary : colors.light,
+                color:
+                selectedcategory === index ? colors.white : colors.primary,
               },
             ]}
           >
-            <MaterialCommunityIcons
-              name={item.iconName}
-              size={24}
-              color={selectedcatrgory == index ? colors.white : colors.primary}
-            />
-            <Text
-              style={[
-                styles.catrgoryText,
-                {
-                  color:
-                    selectedcatrgory == index ? colors.white : colors.primary,
-                },
-              ]}
-            >
-              {item.name}
-            </Text>
-          </View>
-        </TouchableOpacity>
-      ))}
+            {name}
+          </Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -58,7 +48,7 @@ const styles = StyleSheet.create({
   catrgoriesContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    padding: 20,
+    padding: 10,
   },
 
   catrgoriesItemBtn: {
