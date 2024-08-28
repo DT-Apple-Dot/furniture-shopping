@@ -27,13 +27,6 @@ const furnitures = [
     price: "$300",
     liked: true,
   },
-  {
-    id: "5",
-    name: "Grey couch",
-    image: require("../assets/furniture5.jpg"),
-    price: "$700",
-    liked: false,
-  },
 ];
 
 export default furnitures;

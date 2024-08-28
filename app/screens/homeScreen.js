@@ -15,6 +15,7 @@ import ProductCard from "../components/ProductCard";
 
 import ListCatrgories from "../components/ListCatrgories";
 import catrgoriesItems from "../config/CatrgoriesItems";
+import furnitures from "../config/furnitures";
 
 const HomeScreen = ({ navigation }) => {
   const [selectedcategory, setselectedcategory] = React.useState(null);
@@ -59,8 +60,10 @@ const HomeScreen = ({ navigation }) => {
 
       <FlatList
         numColumns={2}
-        data={[1, 2, 3, 4, 5, 6]}
-        renderItem={ProductCard}
+        data={furnitures}
+        renderItem={({ item }) => (
+          <ProductCard image={item.image} name={item.name} price={item.price} />
+        )}
         showsVerticalScrollIndicator={false}
         style={styles.product}
       />

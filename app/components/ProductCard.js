@@ -2,23 +2,16 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-const ProductCard = () => {
+const ProductCard = ({ name, image, price }) => {
   return (
     <View style={styles.container}>
-      <Image
-        source={require("../assets/furniture1.jpg")}
-        style={styles.coverImage}
-      />
+      <Image source={image} style={styles.coverImage} />
       <View style={styles.content}>
-        <Text style={styles.title}>Black Simple Lamp</Text>
-        <Text style={styles.price}>$ 12.00</Text>
+        <Text style={styles.title}>{name}</Text>
+        <Text style={styles.price}>{price}</Text>
       </View>
       <View style={styles.iconContainer}>
-        <MaterialCommunityIcons
-          name="shopping"
-          size={20}
-          color={"#FFFFFF"}
-        />
+        <MaterialCommunityIcons name="shopping" size={20} color={"#FFFFFF"} />
       </View>
     </View>
   );
@@ -31,6 +24,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 20,
     position: "relative",
+    marginVertical: 10,
   },
 
   coverImage: {
