@@ -6,56 +6,65 @@ import {
   View,
   Text,
   ScrollView,
-  TouchableOpacity,
-  FlatList
+  FlatList,
 } from "react-native";
+
 import colors from "../config/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-const { width } = Dimensions.get("screen");
+import ProductCard from "../components/ProductCard";
 
 import ListCatrgories from "../components/ListCatrgories";
 import catrgoriesItems from "../config/CatrgoriesItems";
 
 const HomeScreen = ({ navigation }) => {
   const [selectedcategory, setselectedcategory] = React.useState(null);
+
   return (
     <SafeAreaView style={{ backgroundColor: colors.white, flex: 1 }}>
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.header}>
-        <MaterialCommunityIcons
-          name="magnify"
-          size={24}
-          color={colors.primary}
-          style={styles.icon}
-        />
-
-        <Text style={styles.headerTitle}>
-          Make home <Text style={styles.title}>BEAUTIFUL</Text>
-        </Text>
-
-        <MaterialCommunityIcons
-          name="cart-outline"
-          size={24}
-          color={colors.primary}
-          style={styles.icon}
-        />
-      </View>
-      <FlatList
-        data={catrgoriesItems}
-        horizontal
-        renderItem={({ item }) => (
-          <ListCatrgories
-            icon={item.iconName}
-            name={item.name}
-            index={item.id}
-            selectedcategory={selectedcategory}
-            setselectedcategory={setselectedcategory}
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.header}>
+          <MaterialCommunityIcons
+            name="magnify"
+            size={24}
+            color={colors.primary}
+            style={styles.icon}
           />
-        )}
-        keyExtractor={(item) => item.id.toString()}
+
+          <Text style={styles.headerTitle}>
+            Make home <Text style={styles.title}>BEAUTIFUL</Text>
+          </Text>
+
+          <MaterialCommunityIcons
+            name="cart-outline"
+            size={24}
+            color={colors.primary}
+            style={styles.icon}
+          />
+        </View>
+        <FlatList
+          data={catrgoriesItems}
+          horizontal
+          renderItem={({ item }) => (
+            <ListCatrgories
+              icon={item.iconName}
+              name={item.name}
+              index={item.id}
+              selectedcategory={selectedcategory}
+              setselectedcategory={setselectedcategory}
+            />
+          )}
+          keyExtractor={(item) => item.id.toString()}
+        />
+      </ScrollView>
+
+      <FlatList
+        numColumns={2}
+        data={[1, 2, 3, 4, 5, 6]}
+        renderItem={ProductCard}
+        showsVerticalScrollIndicator={false}
+        style={styles.product}
       />
-    </ScrollView>
-  </SafeAreaView>
+    </SafeAreaView>
   );
 };
 
@@ -83,6 +92,10 @@ const styles = StyleSheet.create({
 
   title: {
     color: colors.dark,
+  },
+
+  product: {
+    marginVertical: 20,
   },
 });
 

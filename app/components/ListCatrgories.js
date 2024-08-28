@@ -3,7 +3,13 @@ import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import colors from "../config/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-const ListCatrgories = ({ name, index, icon, selectedcategory, setselectedcategory }) => {
+const ListCatrgories = ({
+  name,
+  index,
+  icon,
+  selectedcategory,
+  setselectedcategory,
+}) => {
   return (
     <View style={styles.catrgoriesContainer}>
       <TouchableOpacity
@@ -18,7 +24,7 @@ const ListCatrgories = ({ name, index, icon, selectedcategory, setselectedcatego
             styles.catrgoriesItemBtn,
             {
               backgroundColor:
-              selectedcategory === index ? colors.primary : colors.light,
+                selectedcategory === index ? colors.primary : colors.light,
             },
           ]}
         >
@@ -32,7 +38,7 @@ const ListCatrgories = ({ name, index, icon, selectedcategory, setselectedcatego
               styles.catrgoryText,
               {
                 color:
-                selectedcategory === index ? colors.white : colors.primary,
+                  selectedcategory === index ? colors.white : colors.primary,
               },
             ]}
           >
