@@ -21,7 +21,9 @@ const HomeScreen = ({ navigation }) => {
   const [selectedcategory, setselectedcategory] = React.useState(null);
 
   return (
-    <SafeAreaView style={{ backgroundColor: colors.white, flex: 1 }}>
+    <SafeAreaView
+      style={{ backgroundColor: colors.white, flex: 1, paddingTop: 25 }}
+    >
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <MaterialCommunityIcons
@@ -73,7 +75,7 @@ const HomeScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   header: {
-    paddingVertical: 20,
+    paddingVertical: 10,
     paddingHorizontal: 20,
     flexDirection: "row",
     justifyContent: "space-between",
@@ -95,10 +97,6 @@ const styles = StyleSheet.create({
 
   title: {
     color: colors.dark,
-  },
-
-  product: {
-    marginVertical: 20,
   },
 });
 
