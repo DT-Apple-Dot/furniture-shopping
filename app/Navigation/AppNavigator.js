@@ -10,23 +10,36 @@ import AccountScreen from "../screens/AccountScreen";
 const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => (
-  <Tab.Navigator>
+  <Tab.Navigator
+    screenOptions={{
+      tabBarShowLabel: false,
+      tabBarActiveTintColor: "black",
+      headerShown: false,
+    }}
+  >
     <Tab.Screen
       name="Home"
       component={HomeScreen}
       options={{
-        tabBarIcon: () => (
-          <MaterialCommunityIcons name="home-outline" size={24} />
+        tabBarIcon: ({ color, size, focused }) => (
+          <MaterialCommunityIcons
+            name={focused ? "home" : "home-outline"}
+            color={color}
+            size={size}
+          />
         ),
-        headerShown: false,
       }}
     />
     <Tab.Screen
-      name="Favorites"
+      name="Bookmark"
       component={FavoritesScreen}
       options={{
-        tabBarIcon: () => (
-          <MaterialCommunityIcons name="bookmark-outline" size={24} />
+        tabBarIcon: ({ color, size, focused }) => (
+          <MaterialCommunityIcons
+            name={focused ? "bookmark" : "bookmark-outline"}
+            color={color}
+            size={size}
+          />
         ),
       }}
     />
@@ -34,17 +47,25 @@ const AppNavigator = () => (
       name="Notification"
       component={NotificationScreen}
       options={{
-        tabBarIcon: () => (
-          <MaterialCommunityIcons name="bell-outline" size={24} />
+        tabBarIcon: ({ color, size, focused }) => (
+          <MaterialCommunityIcons
+            name={focused ? "bell" : "bell-outline"}
+            color={color}
+            size={size}
+          />
         ),
       }}
     />
     <Tab.Screen
-      name="Account"
+      name="Profile"
       component={AccountScreen}
       options={{
-        tabBarIcon: () => (
-          <MaterialCommunityIcons name="account-outline" size={24} />
+        tabBarIcon: ({ color, size, focused }) => (
+          <MaterialCommunityIcons
+            name={focused ? "account" : "account-outline"}
+            color={color}
+            size={size}
+          />
         ),
       }}
     />
