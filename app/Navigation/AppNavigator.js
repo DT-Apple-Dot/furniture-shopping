@@ -2,7 +2,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import HomeScreen from "../screens/homeScreen";
+import HomeScreen from "../screens/HomeScreen";
 import FavoritesScreen from "../screens/FavoritesScreen";
 import NotificationScreen from "../screens/NotificationScreen";
 import AccountScreen from "../screens/AccountScreen";

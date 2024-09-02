@@ -1,14 +1,14 @@
-import { Text, StyleSheet, View } from "react-native";
-import React, { Component } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
 
-export default class welcomeScreen extends Component {
-  render() {
-    return (
-      <View>
-        <Text>welcomeScreen</Text>
-      </View>
-    );
-  }
-}
+const WelcomeScreen = () => {
+  return (
+    <View>
+      <Text>WelcomeScreen</Text>
+    </View>
+  );
+};
+
+export default WelcomeScreen;
 
 const styles = StyleSheet.create({});
