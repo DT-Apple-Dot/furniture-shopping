@@ -3,10 +3,11 @@ import React from "react";
 import colors from "../config/colors";
 import Logo from "../components/Logo";
 import AppTextInput from "../components/AppTextInput";
+import Buttom from "../components/Buttom";
 
 const LoginScreen = () => {
   return (
-    <SafeAreaView style={{ backgroundColor: colors.offwhite, flex: 1 }}>
+    <SafeAreaView style={{ backgroundColor: colors.white, flex: 1 }}>
       <Logo />
       <View style={styles.container}>
         <Text style={styles.text_1}>Hello !</Text>
@@ -19,6 +20,13 @@ const LoginScreen = () => {
 
         <Text style={styles.text}>Password</Text>
         <AppTextInput />
+
+        <Text style={styles.forgot}>Forgot Password</Text>
+
+        <View style={styles.btncontainer}>
+          <Buttom title="Login" />
+          <Buttom title="Sing Up" />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -34,28 +42,41 @@ const styles = StyleSheet.create({
 
   text_1: {
     fontSize: 30,
-    fontWeight: "bold",
+    fontWeight: "700",
     color: colors.gray,
   },
 
   text_2: {
     fontSize: 30,
-    fontWeight: "bold",
+    fontWeight: "700",
     color: colors.dark,
   },
 
   form: {
-    width: 345,
+    width: 360,
     height: 500,
     paddingLeft: 30,
     marginVertical: 30,
-    marginRight: 30,
-    backgroundColor: colors.white,
+    borderTopRightRadius:25,
+    backgroundColor: colors.offwhite,
   },
 
   text: {
     fontSize: 14,
     color: colors.gray,
     marginVertical: 30,
+  },
+
+  forgot: {
+    color: colors.dark,
+    fontSize: 18,
+    fontWeight: "600",
+    marginTop: 30,
+    textAlign: "center",
+  },
+
+  btncontainer: {
+    marginTop: 35,
+    alignItems: "center",
   },
 });
